@@ -73,14 +73,31 @@ nodist_libemane_model_bentpipe_la_SOURCES = \
  bentpipemessage.pb.h
 
 EXTRA_DIST = \
- bentpipemessage.proto
+ bentpipemessage.proto \
+ emane-model-bentpipe.xml.in \
+ emane-model-bentpipe-pcr.xml.in
 
 BUILT_SOURCES = \
- $(nodist_libemane_model_bentpipe_la_SOURCES)
+ $(nodist_libemane_model_bentpipe_la_SOURCES) \
+ emane-model-bentpipe.xml \
+ emane-model-bentpipe-pcr.xml
+
+edit = sed -e 's|@datadir[@]|$(pkgdatadir)|g'  
+
+emane-model-bentpipe.xml: emane-model-bentpipe.xml.in
+	$(edit) $< > $@
+
+emane-model-bentpipe-pcr.xml: emane-model-bentpipe-pcr.xml.in 
+	$(edit) $< > $@
 
 clean-local:
 	rm -f $(BUILT_SOURCES)
 
 bentpipemessage.pb.cc bentpipemessage.pb.h: bentpipemessage.proto
 	protoc -I=. --cpp_out=. $<
+
+install-exec-hook:
+	$(mkinstalldirs) $(DESTDIR)$(datadir)/$(PACKAGE)/xml/models/mac/bentpipe
+	cp -f emane-model-bentpipe.xml $(SCHEMAS) $(DESTDIR)$(datadir)/$(PACKAGE)/xml/models/mac/bentpipe
+	cp -f emane-model-bentpipe-pcr.xml $(SCHEMAS) $(DESTDIR)$(datadir)/$(PACKAGE)/xml/models/mac/bentpipe
 

@@ -85,128 +85,128 @@ EMANE::Models::BentPipe::RadioModel::initialize(Registrar & registrar)
   configRegistrar.registerNonNumeric<std::string>("transponder.receive.frequency",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:29.910G"},
                                                   "Defines per transponder receive center frequency in hz"
                                                   " with the following format: <transponder index>:<frequency hz>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+(\\.\\d+){0,1}(G|M|K){0,1}$");
+                                                  "^\\d+:\\d+(\\.\\d+)?(G|M|K)?(, *\\d+:\\d+(\\.\\d+)?[GMK]?)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.receive.bandwidth",
                                                   ConfigurationProperties::REQUIRED,
-                                                  {},
+                                                  {"0:25M"},
                                                   "Defines per transponder receive bandwidth in hz"
                                                   " with the following format: <transponder index>:<frequency hz>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+(\\.\\d+){0,1}(G|M|K){0,1}$");
+                                                  "^\\d+:\\d+(\\.\\d+)?(G|M|K)?(, *\\d+:\\d+(\\.\\d+)?[GMK]?)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.receive.antenna",
                                                   ConfigurationProperties::REQUIRED,
-                                                  {},
+                                                  {"0:0"},
                                                   "Defines per transponder receive antenna"
                                                   " with the following format:"
                                                   " <transponder index>:<antenna index>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+$");
+                                                  "^\\d+:\\d+(, *\\d+:\\d+)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.receive.action",
                                                   ConfigurationProperties::REQUIRED,
-                                                  {},
+                                                  {"0:process"},
                                                   "Defines per transponder receive action:"
                                                   " 'ubend' or 'process' with the following format:"
                                                   " <transponder index>:ubend|process.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(process|ubend)$");
+                                                  "^\\d+:(process|ubend)(, *\\d+:(process|ubend))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.receive.enable",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:on"},
                                                   "Defines per transponder receive enable:"
                                                   " 'yes' or 'on'; or 'no' or 'off' with the format:"
                                                   " <transponder index>:yes|on|no|off.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(on|off|yes|no)$");
+                                                  "^\\d+:(on|off|yes|no)(, *\\d+:(on|off|yes|no))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.pcrcurveindex",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:0"},
                                                   "Defines per transponder transmit PCR curve index"
                                                   " with the following format:"
                                                   " <transponder index>:<pcrcurveindex>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+$");
+                                                  "^\\d+:\\d+(, *\\d+:\\d+)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.frequency",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:29.910G"},
                                                   "Defines per transponder transmit center frequency in hz"
                                                   " with the following format: <transponder index>:<frequency hz>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+(\\.\\d+){0,1}(G|M|K){0,1}$");
+                                                  "^\\d+:\\d+(\\.\\d+)?(G|M|K)?(, *\\d+:\\d+(\\.\\d+)?(G|M|K)?)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.bandwidth",
                                                   ConfigurationProperties::REQUIRED,
-                                                  {},
+                                                  {"0:25M"},
                                                   "Defines per transponder transmit bandwidth in hz"
                                                   " with the following format: <transponder index>:<frequency hz>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+(\\.\\d+){0,1}(G|M|K){0,1}$");
+                                                  "^\\d+:\\d+(\\.\\d+)?(G|M|K)?(, *\\d+:\\d+(\\.\\d+)?(G|M|K)?)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.antenna",
                                                   ConfigurationProperties::REQUIRED,
-                                                  {},
+                                                  {"0:0"},
                                                   "Defines per transponder transmit antenna"
                                                   " with the following format:"
                                                   " <transponder index>:<antenna index>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+$");
+                                                  "^\\d+:\\d+(, *\\d+:\\d+)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.ubend.delay",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:na"},
                                                   "Defines per transponder transmit u-bend delay in"
                                                   " microseconds. Applicable when associated"
                                                   " 'transponder.receive.action' is 'ubend' with the"
                                                   " following format: <transponder index>:<delay microseconds>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(na|\\d+)$");
+                                                  "^\\d+:(na|\\d+)(, *\\d+:(na|\\d+))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.datarate",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:5M"},
                                                   "Defines per transponder transmit datarate in bps"
                                                   " with the following format: <transponder index>:<datarate bps>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+(\\.\\d+){0,1}(G|M|K){0,1}$");
+                                                  "^\\d+:\\d+(\\.\\d+)?(G|M|K)?(, *\\d+:\\d+(\\.\\d+)?(G|M|K)?)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.power",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:54"},
                                                   "Defines per transponder transmit power in dBm"
                                                   " with the following format: <transponder index>:<power dBm>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:\\d+(\\.\\d+){0,1}(G|M|K){0,1}$");
+                                                  "^\\d+:\\d+(\\.\\d+)?(G|M|K)?(, *\\d+:\\d+(\\.\\d+)?(G|M|K)?)*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.tosmap",
                                                   ConfigurationProperties::REQUIRED,
-                                                  {},
+                                                  {"0:0-255"},
                                                   "Defines TOS or DSCP mapping to transponder index in order to"
                                                   " direct downstream frames to the appropriate transponder  when"
                                                   " operating in 'process' mode. Note: TOS or DSCP is dictated"
@@ -214,74 +214,74 @@ EMANE::Models::BentPipe::RadioModel::initialize(Registrar & registrar)
                                                   " format: <transponder index>:all|na|[(value|value-value)];....",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(na|((\\d+|\\d+-\\d+)(;){0,1}){1,})");
+                                                  "^\\d+:(na|((\\d+-\\d+|\\d+);?)+)(, *\\d+:(na|((\\d+-\\d+|\\d+);?)+))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.slotperframe",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:na"},
                                                   "Defines per transponder transmit slots per"
                                                   " frame with the following format:"
                                                   " <transponder index>:<slots per frame>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(na|\\d+)$");
+                                                  "^\\d+:(na|\\d+)(, *\\d+:(na|\\d+))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.slotsize",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:na"},
                                                   "Defines per transponder transmit slot size in"
                                                   " microseconds or 'na' with the"
                                                   " following format: <transponder index>:na|<slot size microseconds>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(na|\\d+)$");
+                                                  "^\\d+:(na|\\d+)(, *\\d+:(na|\\d+))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.txslots",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:na"},
                                                   "Defines per transponder transmit slots"
                                                   " with the following format:"
                                                   " <transponder index>:[slot|slot-slot];....",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(na|(\\d+|\\d+-\\d+)(;(\\d+|\\d+-\\d+)){0,})$");
+                                                  "^\\d+:(na|(\\d+-\\d+|\\d+)(;(\\d+-\\d+|\\d+))*)(, *\\d+:(na|(\\d+-\\d+|\\d+)(;(\\d+-\\d+|\\d+))*))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.mtu",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:2048"},
                                                   "Defines per transponder transmit mtu in"
                                                   " bytes or 'na' if using transmit slots with "
                                                   " following format: <transponder index>:na|<slot size microseconds>.",
                                                   1,
                                                   std::numeric_limits<std::uint64_t>::max(),
-                                                  "^\\d+:(na|\\d+)$");
+                                                  "^\\d+:(na|\\d+)(, *\\d+:(na|\\d+))*$");
 
   configRegistrar.registerNonNumeric<std::string>("transponder.transmit.enable",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:on"},
                                                   "Defines per transponder transmit enable:"
                                                   " 'yes' or 'on'; or 'no' or 'off' with the format:"
                                                   " <transponder index>:yes|on|no|off.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(on|off|yes|no)$");
+                                                  "^\\d+:(on|off|yes|no)(, *\\d+:(on|off|yes|no))*$");
 
   configRegistrar.registerNonNumeric<std::string>("antenna.defines",
                                                   ConfigurationProperties::REQUIRED |
                                                   ConfigurationProperties::MODIFIABLE,
-                                                  {},
+                                                  {"0:omni;47.0;0"},
                                                   "Defines antennas available for use by transponders"
                                                   " with the following format: <antenna index>:"
                                                   "(omni,<fixed gain dBi>)|(<antenna profile id,"
                                                   "azimuth degrees,elevation degress>),<spectrummask>.",
                                                   1,
                                                   std::numeric_limits<std::uint16_t>::max(),
-                                                  "^\\d+:(omni;(-){0,1}\\d+(\\.\\d+){0,1}|\\d+;(-){0,1}\\d+(\\.\\d+){0,1};(-){0,1}\\d+(\\.\\d+){0,1});\\d+$");
+                                                  "^\\d+:(omni;-?\\d+(\\.\\d+)?|\\d+;-?\\d+(\\.\\d+)?;-?\\d+(\\.\\d+)?);\\d+(, *\\d+:(omni;-?\\d+(\\.\\d+)?|\\d+;-?\\d+(\\.\\d+)?;-?\\d+(\\.\\d+)?);\\d+)*$");
 
 
   configRegistrar.registerNumeric<std::uint16_t>("reassembly.fragmentcheckthreshold",

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mac SYSTEM "file://@datadir@/dtd/mac.dtd">
+<mac name="emane MAC" library="emane-model-bentpipe">
+    <param name="antenna.defines" value="0:omni;47.0;0"/>
+    <param name="transponder.receive.action" value="0:process"/>
+    <param name="transponder.receive.enable" value="0:on"/>
+    <param name="transponder.receive.antenna" value="0:0"/>
+    <param name="transponder.receive.bandwidth" value="0:150M"/>
+    <param name="transponder.receive.frequency" value="0:29.910G"/>
+    <param name="transponder.transmit.enable" value="0:on"/>
+    <param name="transponder.transmit.antenna" value="0:0"/>
+    <param name="transponder.transmit.bandwidth" value="0:150M"/>
+    <param name="transponder.transmit.datarate" value="0:100M"/>
+    <param name="transponder.transmit.frequency" value="0:29.910G"/>
+    <param name="transponder.transmit.mtu" value="0:2048"/>
+    <param name="transponder.transmit.pcrcurveindex" value="0:0"/>
+    <param name="transponder.transmit.power" value="0:0"/>
+    <param name="transponder.transmit.slotperframe" value="0:na"/>
+    <param name="transponder.transmit.slotsize" value="0:na"/>
+    <param name="transponder.transmit.tosmap" value="0:0-255"/>
+    <param name="transponder.transmit.txslots" value="0:na"/>
+    <param name="transponder.transmit.ubend.delay" value="0:na"/>
+</mac>

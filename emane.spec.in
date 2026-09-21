@@ -525,6 +525,9 @@ rm -rf $RPM_BUILD_ROOT
 %files model-bentpipe
 %defattr(-,root,root,-)
 %{_libdir}/libemane-model-bentpipe.*
+%dir %{_datadir}/emane/xml/models/mac/bentpipe
+%{_datadir}/emane/xml/models/mac/bentpipe/emane-model-bentpipe.xml
+%{_datadir}/emane/xml/models/mac/bentpipe/emane-model-bentpipe-pcr.xml
 
 %doc %{_pkgdocdir}
 %if 0%{?_licensedir:1}
